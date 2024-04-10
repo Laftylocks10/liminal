@@ -1,11 +1,3 @@
-def replace(arr, index, value):
-    if 0 <= index < len(arr):
-        arr.pop(index)
-        arr.insert(index, value)
-        print(arr)
-    else:
-        raise IndexError("Replace Function: Index specified out of range,", str(index), "is higher than", str(len(arr)))
-
 def time_format(dur):
     seconds = dur
     minutes = 0
@@ -40,7 +32,7 @@ def countdown(duration, decrement):
         for remaining in range(duration, 0, -decrement):
             if duration - decrement > 0: # It checks if decrement is less than remaining time.
                 tleft = time_format(remaining) # This is where the formatted version of the time comes into play
-                print(tleft)
+                print("ime left:", tleft)
                 time.sleep(decrement)
             else:
                 time.sleep(duration) # If it's not, it will simply wait the little time left. We don't want any negative numbers. That'll break it!
@@ -51,28 +43,61 @@ def countdown(duration, decrement):
 
 countdown(100, 1) # Test for yourself
 
+# The following is random functions I made within this. They're not really the main thing I want you to look at so, uh. Enjoy
 
+def replace(arr, index, value):
+    if 0 <= index < len(arr):
+        arr.pop(index)
+        arr.insert(index, value)
+        print(arr)
+    else:
+        raise IndexError("Replace Function: Index specified out of range,", str(index), "is higher than", str(len(arr)))
 
+def removeclass(arr, classval):
+    holder = []
+    for _index, elementval in enumerate(arr):
+        if not isinstance(elementval, classval):
+            holder.append(elementval)
+    print("Old Version of array:", arr)
+    arr = holder
+    print("Updated Version of array:", arr)
+    
+def removereps(arr):
+    holder = []
+    for _index, elementval in enumerate(arr):
+        if elementval not in holder:
+            holder.append(elementval)
+    print("Array with repetitions:", arr)
+    arr = holder
+    print("New array without repetitions:", arr)
 
+def shuffle(arr):
+    import random
+    holder = []
+    chosindices = []
+    
+    for index in range(len(arr)):
+        while True:
+            randomindex = random.randint(0,len(arr)-1)
+            if randomindex not in chosindices:
+                chosindices.append(randomindex)
+                break
+        holder.append(arr[randomindex])
+    arr = holder
+    print("Shuffled Version of array:", arr)
+        
+def removeoccurs(arr, occurance):
+    holder = []
+    for index, elementval in enumerate(arr):
+        if elementval != occurance:
+            holder.append(elementval)
+    print("New array without occurance:", occurance)
+    print(holder)
 
+        
+    
+    
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        
 
 
