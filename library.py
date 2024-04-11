@@ -94,10 +94,33 @@ def removeoccurs(arr, occurance):
     print("New array without occurance:", occurance)
     print(holder)
 
+def removerandom(arr, amount):
+    for counter in range(amount):
+        possible = len(arr) - 1
+        randindex = random.randint(0, possible)
+        randval = arr[randindex]
+        del arr[randindex]
+        print("Removed index", randindex, "or value", randval)
         
-    
-    
-
-        
-
-
+def removevowels(val): # Currently only supports arrays and strings. It uses return, so you must define values
+    holder = []
+    vowels = ["a", "e", "i", "o", "u", "A", "E", "I", "O", U"]
+    if isinstance(val, str):
+        replaceval = ""
+        for _indexz, character in enumerate(elementval):
+            if character not in vowels:
+                replaceval.append(character)
+        return replaceval
+    elif isinstance(val, list):
+        for _indexy, elementval in enumerate(val):
+            if isinstance(elementval, str):
+                replaceval = ""
+                for _indexz, character in enumerate(elementval):
+                    if character not in vowels:
+                        replaceval.append(character)
+                holder[indexy] = replaceval
+        return holder
+            else:
+                holder.append(elementval)
+    else:
+        raise ValueError("Only strings and arrays are supported")
